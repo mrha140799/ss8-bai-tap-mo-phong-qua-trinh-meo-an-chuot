@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CodeGym</title>
+</head>
+<body>
+    <script>
+        function Mouse() {
+            this.name;
+            this.weight;
+            this.speed;
+            this.status;
+            this.ability;
+
+            this.setName = function (name) {
+                this.name = name;
+            };
+            this.getName = function () {
+                return this.name;
+            };
+            this.setWeight = function (weight) {
+                this.weight = weight;
+            };
+            this.getWeight = function () {
+                return this.weight;
+            };
+            this.setSpeed = function (speed) {
+                this.speed = speed;
+            };
+            this.getSpeed = function () {
+                return this.speed;
+            };
+            this.dead = function () {
+                this.status = false;
+            };
+            this.setAbility = function (str) {
+                this.ability = str;
+            };
+            this.getAbility = function () {
+                return this.ability;
+            };
+            this.setStatus = function (status) {
+                this.status = status;
+            };
+            this.getStatus = function () {
+                return this.status;
+            }
+        }
+        function Cat() {
+            this.name;
+            this.weight;
+            this.maxSpeed;
+            this.ability;
+
+            this.setName = function (name) {
+                this.name = name;
+            };
+            this.getName = function () {
+                return this.name;
+            };
+            this.setWeight = function (weight) {
+                this.weight = weight;
+            };
+            this.getWeight = function () {
+                return this.weight;
+            };
+            this.setMaxSpeed = function (speed) {
+                this.maxSpeed = speed;
+            };
+            this.getMaxSpeed = function () {
+                return this.maxSpeed;
+            };
+            this.setAbility = function (str) {
+                this.ability = str;
+            };
+            this.getAbility = function () {
+                return this.ability;
+            };
+            this.CaughtMouse = function (mouse) {
+                if (this.maxSpeed > mouse.speed) {
+                    mouse.setStatus(false);
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            };
+            this.eatMouse = function (mouse) {
+                if (!mouse.getStatus()) {
+                    this.weight += mouse.getWeight();
+                }
+            };
+
+        }
+
+
+        let mouse  = new Mouse();
+        let cat = new Cat();
+
+        mouse.setName("Jerry");
+        mouse.setWeight(0.5);
+        mouse.setSpeed(100);
+        mouse.setAbility("chit chit");
+
+        cat.setName("Tom");
+        cat.setWeight(10);
+
+
+        for (let i = 10; i <= (mouse.getSpeed() +10); i++) {
+            cat.setMaxSpeed(i);
+
+            if (cat.CaughtMouse(mouse)){
+                document.write("Tom's Speed : " + cat.getMaxSpeed()+"<br>");
+                cat.eatMouse(mouse);
+                cat.setAbility("Chẹp chẹp");
+                break;
+            } else {
+                document.write("Jerry : " + mouse.getAbility()+"<br>");
+
+            }
+        }
+
+        if (!mouse.status) {
+            document.write("Tom : " + cat.getAbility()+"<br>");
+            document.write("Tom weight: " + cat.getWeight()+"<br>");
+        }
+
+    </script>
+</body>
+</html>
